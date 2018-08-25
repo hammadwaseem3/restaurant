@@ -16,7 +16,7 @@ import java.util.List;
 @Component
 public class MenuFacade {
 
-    MenuService menuService;
+    private MenuService menuService;
 
     @Autowired
     public MenuFacade(MenuService menuService) {

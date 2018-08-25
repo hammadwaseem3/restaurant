@@ -13,7 +13,7 @@ import java.util.Optional;
 @Service
 public class StaffService {
 
-    StaffRepository staffRepository;
+    private StaffRepository staffRepository;
 
     @Autowired
     public StaffService(StaffRepository staffRepository) {

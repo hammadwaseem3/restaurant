@@ -13,7 +13,7 @@ import java.util.Optional;
 @Service
 public class TableService {
 
-    TableOfRestaurantRepository tableOfRestaurantRepository;
+    private TableOfRestaurantRepository tableOfRestaurantRepository;
 
     @Autowired
     public TableService(TableOfRestaurantRepository tableOfRestaurantRepository) {

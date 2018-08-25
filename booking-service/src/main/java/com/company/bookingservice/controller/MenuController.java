@@ -5,41 +5,43 @@ import com.company.bookingservice.facade.MenuFacade;
 import com.company.bookingservice.service.MenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController("/menu/")
+@RestController
+@RequestMapping("/menu/")
 public class MenuController {
 
-    MenuFacade menuFacade;
+    private MenuFacade menuFacade;
 
     @Autowired
     public MenuController(MenuFacade menuFacade){
         this.menuFacade = menuFacade;
     }
 
-    @RequestMapping(name = "getMenu", method = RequestMethod.GET)
+    @RequestMapping(value = "getMenu/", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
     public @ResponseBody List<MenuDto> getMenu(){
         return menuFacade.getMenu();
     }
 
-    @RequestMapping(name = "addIntoMenu", method = RequestMethod.POST)
+    @RequestMapping(value = "addIntoMenu/", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.ACCEPTED)
     public void addIntoMenu(
             @RequestBody MenuDto menuDto){
         menuFacade.addIntoMenu(menuDto);
     }
 
-    @RequestMapping(name = "deleteFromMenuById", method = RequestMethod.DELETE)
+    @RequestMapping(value = "deleteFromMenuById/", method = RequestMethod.DELETE)
     @ResponseStatus(HttpStatus.OK)
     public void deleteFromMenuById(
             @RequestBody MenuDto menuDto) {
         menuFacade.deleteFromMenuById(menuDto);
     }
 
-    @RequestMapping(name = "addWholeMenu", method = RequestMethod.POST)
+    @RequestMapping(value = "addWholeMenu/", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.ACCEPTED)
     public void addWholeMenu(
             @RequestBody List<MenuDto> menuDtoList){

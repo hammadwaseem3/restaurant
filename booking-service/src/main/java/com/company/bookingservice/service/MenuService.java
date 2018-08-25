@@ -14,7 +14,7 @@ import java.util.List;
 @Service
 public class MenuService {
 
-    MenuRepository menuRepository;
+    private MenuRepository menuRepository;
 
     @Autowired
     public MenuService(MenuRepository menuRepository) {

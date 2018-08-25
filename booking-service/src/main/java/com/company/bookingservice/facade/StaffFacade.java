@@ -15,7 +15,7 @@ import java.util.List;
 @Component
 public class StaffFacade {
 
-    StaffService staffService;
+    private StaffService staffService;
 
     @Autowired
     public StaffFacade(StaffService staffService) {

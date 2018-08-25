@@ -15,7 +15,7 @@ import java.util.List;
 @Component
 public class TableFacade {
 
-    TableService tableService;
+    private TableService tableService;
 
     @Autowired
     public TableFacade(TableService tableService) {

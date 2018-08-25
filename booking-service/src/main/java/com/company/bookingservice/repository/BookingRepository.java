@@ -1,7 +1,7 @@
 package com.company.bookingservice.repository;
 
 import com.company.bookingservice.dao.Booking;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface BookingRepository extends CrudRepository<Booking,Integer> {
+public interface BookingRepository extends JpaRepository<Booking,Integer> {
 }

@@ -12,6 +12,7 @@ import java.util.List;
 @Getter
 @Setter
 @EqualsAndHashCode
+@Builder
 public class Staff {
 
     @Id
