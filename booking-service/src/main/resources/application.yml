@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: booking-service    # define name of Service
+  datasource:
+    url: jdbc:mysql://localhost:3306/restaurant
+    username: root
+    password:
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:1111/eureka/  # define eureka server path
+server:
+  port: 2222    # http port number

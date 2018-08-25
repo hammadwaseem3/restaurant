@@ -1,0 +1,21 @@
+# Spring properties
+spring:
+  application:
+     name: zuul-gateway
+eureka:
+  client:
+    service-url:
+      defaultZone : http://localhost:1111/eureka/
+    fetch-registry: true
+    register-with-eureka: false
+  instance:
+    prefer-ip-address: true
+
+server:
+  port: 3333
+
+zuul:
+  routes:
+    accounts:
+      path: /booking/**
+      serviceId: booking-service

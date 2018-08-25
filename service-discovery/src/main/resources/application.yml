@@ -1,0 +1,11 @@
+# Configure Eureka Server
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+
+# Configure Port
+server:
+  port: 1111
