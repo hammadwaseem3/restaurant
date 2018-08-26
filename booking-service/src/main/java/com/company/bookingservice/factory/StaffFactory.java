@@ -6,7 +6,7 @@ import com.company.bookingservice.dto.StaffDto;
 public class StaffFactory {
 
     public static Staff getStaffFromDto(StaffDto staffDto){
-        return new Staff(staffDto.getFirstName(), staffDto.getLastName());
+        return new Staff(staffDto.getStaffId(), staffDto.getFirstName(), staffDto.getLastName());
     }
 
     public static StaffDto getStaffDtoFromStaff(Staff staff){

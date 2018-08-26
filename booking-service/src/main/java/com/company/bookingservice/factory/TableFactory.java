@@ -6,7 +6,7 @@ import com.company.bookingservice.dto.TableDto;
 public class TableFactory {
 
     public static TableOfRestaurant getTableFromDto(TableDto tableDto){
-        return new TableOfRestaurant(tableDto.getDetails());
+        return new TableOfRestaurant(tableDto.getTableNo(), tableDto.getDetails());
     }
 
     public static TableDto getTableDtoFromTableOfRestaurant(TableOfRestaurant tableOfRestaurant){

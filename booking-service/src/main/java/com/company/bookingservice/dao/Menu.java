@@ -9,6 +9,7 @@ import java.util.List;
 @Entity
 @Table(name = "Menu")
 @NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
 @EqualsAndHashCode
@@ -35,6 +36,13 @@ public class Menu {
             orphanRemoval = true
     )
     private List<OrderItem> orderItemList = new ArrayList<>();
+
+    public Menu(Integer menuId, String menuName, String menuDetail, Integer price) {
+        this.menuId = menuId;
+        this.menuName = menuName;
+        this.menuDetail = menuDetail;
+        this.price = price;
+    }
 
     public Menu(String menuName, String menuDetail, Integer price) {
         this.menuName = menuName;

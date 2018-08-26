@@ -1,12 +1,12 @@
 package com.company.bookingservice.commons.error;
 
-public enum BookingErrorType implements ErrorEnumType<BookingErrorType> {
-    DUPLICATE_BOOKING(1, "Booking already exists for same type");
+public enum BookingOrderErrorType implements ErrorEnumType<BookingOrderErrorType> {
+    SOMETHING_BAD_HAPPENS(1, "Something bad happens");
 
     private int code;
     private String errorMessage;
 
-    private BookingErrorType(int code, String errorMessage) {
+    private BookingOrderErrorType(int code, String errorMessage) {
         this.code = code;
         this.errorMessage = errorMessage;
     }

@@ -38,6 +38,11 @@ public class Booking {
     )
     private List<OrderItem> orderItemList = new ArrayList<>();
 
+    public Booking(Integer bookingId, Date dateOfBooking) {
+        this.bookingId = bookingId;
+        this.dateOfBooking = dateOfBooking;
+    }
+
     public Booking(Date dateOfBooking) {
         this.dateOfBooking = dateOfBooking;
     }

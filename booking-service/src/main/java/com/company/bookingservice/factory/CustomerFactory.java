@@ -6,7 +6,7 @@ import com.company.bookingservice.dto.CustomerDto;
 public class CustomerFactory {
 
     public static Customer getCustomerFromDto(CustomerDto customerDto){
-        return new Customer(customerDto.getFirstName(), customerDto.getLastName(),
+        return new Customer(customerDto.getCustomerId(), customerDto.getFirstName(), customerDto.getLastName(),
                 customerDto.getPhoneNumber(), customerDto.getEmailAddress(), customerDto.getOtherDetails());
     }
 }

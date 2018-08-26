@@ -41,6 +41,15 @@ public class Customer {
     )
     private List<Booking> bookingList = new ArrayList<>();
 
+    public Customer(Integer customerId, String firstName, String lastName, String phoneNumber, String emailAddress, String otherDetails) {
+        this.customerId = customerId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phoneNumber = phoneNumber;
+        this.emailAddress = emailAddress;
+        this.otherDetails = otherDetails;
+    }
+
     public Customer(String firstName, String lastName, String phoneNumber, String emailAddress, String otherDetails) {
         this.firstName = firstName;
         this.lastName = lastName;

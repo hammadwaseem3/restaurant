@@ -1,5 +1,9 @@
 package com.company.bookingservice.service;
 
+import com.company.bookingservice.commons.error.BookingOrderErrorType;
+import com.company.bookingservice.commons.error.StaffErrorType;
+import com.company.bookingservice.commons.error.TableErrorType;
+import com.company.bookingservice.commons.exception.ServiceException;
 import com.company.bookingservice.dao.*;
 import com.company.bookingservice.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +12,7 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BookingOrderService {
@@ -38,28 +43,42 @@ public class BookingOrderService {
     @Transactional
     public void addOrder(Integer tableOfRestaurantId, Customer customer, List<OrderItem> orderItemList,
                          Integer staffId) {
-        customer = customerRepository.save(customer);
-        TableOfRestaurant tableOfRestaurant = tableOfRestaurantRepository.getOne(tableOfRestaurantId);
 
-        Booking booking = new Booking(new Date());
-        booking.setTableOfRestaurant(tableOfRestaurant);
-        booking.setCustomer(customer);
+        Optional<TableOfRestaurant> optionalTableOfRestaurant = tableOfRestaurantRepository.findById(tableOfRestaurantId);
+        if(!optionalTableOfRestaurant.isPresent()){
+            throw new ServiceException(TableErrorType.INVALID_TABLE_NUMBER);
+        }
 
-        booking = bookingRepository.save(booking);
-        Integer totalAmount = getTotalPriceFromOrderList(orderItemList);
+        Optional<Staff> optionalStaff = staffRepository.findById(staffId);
+        if(!optionalStaff.isPresent()){
+            throw new ServiceException(StaffErrorType.INVALID_STAFF_NUMBER);
+        }
 
-        Staff staff = staffRepository.getOne(staffId);
-        OrderOfRestaurant orderOfRestaurant = OrderOfRestaurant.builder()
-                .comments("")
-                .totalPrice(totalAmount)
-                .staff(staff)
+        try {
+            customer = customerRepository.save(customer);
+
+            Booking booking = new Booking(new Date());
+            booking.setTableOfRestaurant(optionalTableOfRestaurant.get());
+            booking.setCustomer(customer);
+            booking = bookingRepository.save(booking);
+
+            Integer totalAmount = getTotalPriceFromOrderList(orderItemList);
+
+            OrderOfRestaurant orderOfRestaurant = OrderOfRestaurant.builder()
+                    .comments("")
+                    .totalPrice(totalAmount)
+                    .staff(optionalStaff.get())
                     .build();
+            orderOfRestaurant = orderOfRestaurantRepository.save(orderOfRestaurant);
 
-        orderOfRestaurant = orderOfRestaurantRepository.save(orderOfRestaurant);
-        for(OrderItem orderItem : orderItemList){
-            orderItem.setOrderOfRestaurant(orderOfRestaurant);
-            orderItem.setBooking(booking);
-            orderItemRepository.save(orderItem);
+            for (OrderItem orderItem : orderItemList) {
+                orderItem.setOrderOfRestaurant(orderOfRestaurant);
+                orderItem.setBooking(booking);
+                orderItemRepository.save(orderItem);
+            }
+
+        } catch (Exception e){
+            throw new ServiceException(BookingOrderErrorType.SOMETHING_BAD_HAPPENS);
         }
     }
 

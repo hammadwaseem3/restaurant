@@ -1,6 +1,6 @@
 package com.company.bookingservice.commons.error;
 
-public enum MenuErrorType implements ErrorEnumType<BookingErrorType> {
+public enum MenuErrorType implements ErrorEnumType<BookingOrderErrorType> {
     UNABLE_TO_INSERT(1, "Unable to insert into menu"),
     UNABLE_TO_DELETE(2, "Unable to delete from menu"),
     NO_ID_SPECIFIED(3, "No Id is specified, kindly specify Id in request"),

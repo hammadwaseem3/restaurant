@@ -6,6 +6,6 @@ import com.company.bookingservice.dto.OrderItemDto;
 public class OrderItemFactory {
 
     public static OrderItem getOrderItemFromDto(OrderItemDto orderItemDto){
-        return new OrderItem(orderItemDto.getQuantity());
+        return new OrderItem(orderItemDto.getOrderItemId(), orderItemDto.getQuantity());
     }
 }

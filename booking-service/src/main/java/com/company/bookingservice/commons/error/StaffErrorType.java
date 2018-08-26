@@ -1,6 +1,6 @@
 package com.company.bookingservice.commons.error;
 
-public enum StaffErrorType implements ErrorEnumType<BookingErrorType> {
+public enum StaffErrorType implements ErrorEnumType<BookingOrderErrorType> {
     UNABLE_TO_INSERT(1, "Unable to insert into staff"),
     UNABLE_TO_DELETE(2, "Unable to delete from staff"),
     NO_ID_SPECIFIED(3, "No Id is specified, kindly specify Id in request"),
@@ -9,7 +9,8 @@ public enum StaffErrorType implements ErrorEnumType<BookingErrorType> {
     EMPTY_LAST_NAME(6, "lastname cannot be empty"),
     EMPTY_OR_NEGATIVE_ID(7, "ID cannot be null or negative"),
     UNABLE_TO_UPDATE(8, "Unable to update staff"),
-    NO_STAFF_FOUND(9, "No staff found");
+    NO_STAFF_FOUND(9, "No staff found"),
+    INVALID_STAFF_NUMBER(9, "Staff ID is invalid");
 
     private int code;
     private String errorMessage;

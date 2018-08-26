@@ -21,31 +21,31 @@ public class MenuController {
         this.menuFacade = menuFacade;
     }
 
-    @RequestMapping(value = "getMenu/", method = RequestMethod.GET)
+    @RequestMapping(value = "getMenu", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
     public @ResponseBody List<MenuDto> getMenu(){
         return menuFacade.getMenu();
     }
 
-    @RequestMapping(value = "addIntoMenu/", method = RequestMethod.POST)
+    @RequestMapping(value = "addIntoMenu", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.ACCEPTED)
     public void addIntoMenu(
             @RequestBody MenuDto menuDto){
         menuFacade.addIntoMenu(menuDto);
     }
 
-    @RequestMapping(value = "deleteFromMenuById/", method = RequestMethod.DELETE)
+    @RequestMapping(value = "deleteFromMenuById/{id}", method = RequestMethod.DELETE)
     @ResponseStatus(HttpStatus.OK)
     public void deleteFromMenuById(
-            @RequestBody MenuDto menuDto) {
-        menuFacade.deleteFromMenuById(menuDto);
+            @PathVariable("id") Integer id ) {
+        menuFacade.deleteFromMenuById(id);
     }
 
-    @RequestMapping(value = "addWholeMenu/", method = RequestMethod.POST)
+    @RequestMapping(value = "addWholeMenu", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.ACCEPTED)
     public void addWholeMenu(
             @RequestBody List<MenuDto> menuDtoList){
-        //TODO: we can use saveAll method of springData instead of iteratively save each object and we can improve performace :)
+        //TODO: we can use saveAll method of springData instead of iteratively save each object and we can improve performance :)
         for(MenuDto menuDto: menuDtoList){
             menuFacade.addIntoMenu(menuDto);
         }

@@ -9,6 +9,7 @@ import java.util.List;
 @Entity
 @Table(name = "Order_Of_Resturant")
 @NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
 @EqualsAndHashCode
@@ -36,6 +37,12 @@ public class OrderOfRestaurant {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "staff_id")
     private Staff staff;
+
+    public OrderOfRestaurant(Integer orderId, Integer totalPrice, String comments) {
+        this.orderId = orderId;
+        this.totalPrice = totalPrice;
+        this.comments = comments;
+    }
 
     public OrderOfRestaurant(Integer totalPrice, String comments) {
         this.totalPrice = totalPrice;

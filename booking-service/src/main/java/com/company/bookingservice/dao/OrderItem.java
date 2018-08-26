@@ -32,6 +32,11 @@ public class OrderItem {
     @JoinColumn(name = "booking_id")
     private Booking booking;
 
+    public OrderItem(Integer orderItemId, Integer quantity) {
+        this.orderItemId = orderItemId;
+        this.quantity = quantity;
+    }
+
     public OrderItem(Integer quantity) {
         this.quantity = quantity;
     }

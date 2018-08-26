@@ -31,11 +31,11 @@ public class MenuFacade {
         menuService.addIntoMenu(menu);
     }
 
-    public void deleteFromMenuById(MenuDto menuDto) {
-        if(menuDto.getMenuId() == null){
+    public void deleteFromMenuById(Integer id) {
+        if(id == null){
             throw new ServiceException(MenuErrorType.NO_ID_SPECIFIED);
         }
-        menuService.deleteFromMenuById(menuDto.getMenuId());
+        menuService.deleteFromMenuById(id);
     }
 
     public List<MenuDto> getMenu() {

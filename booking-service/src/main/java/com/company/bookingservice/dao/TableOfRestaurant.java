@@ -9,6 +9,7 @@ import java.util.List;
 @Entity
 @Table(name = "Table_Of_Resturant")
 @NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
 @EqualsAndHashCode
@@ -29,6 +30,11 @@ public class TableOfRestaurant {
             orphanRemoval = true
     )
     private List<Booking> bookingList = new ArrayList<>();
+
+    public TableOfRestaurant(Integer tableNo, String details) {
+        this.tableNo = tableNo;
+        this.details = details;
+    }
 
     public TableOfRestaurant(String details) {
         this.details = details;
