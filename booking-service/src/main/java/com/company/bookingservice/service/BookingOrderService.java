@@ -1,6 +1,7 @@
 package com.company.bookingservice.service;
 
 import com.company.bookingservice.commons.error.BookingOrderErrorType;
+import com.company.bookingservice.commons.error.MenuErrorType;
 import com.company.bookingservice.commons.error.StaffErrorType;
 import com.company.bookingservice.commons.error.TableErrorType;
 import com.company.bookingservice.commons.exception.ServiceException;
@@ -54,6 +55,8 @@ public class BookingOrderService {
             throw new ServiceException(StaffErrorType.INVALID_STAFF_NUMBER);
         }
 
+        Integer totalAmount = getTotalPriceFromOrderList(orderItemList);
+
         try {
             customer = customerRepository.save(customer);
 
@@ -61,8 +64,6 @@ public class BookingOrderService {
             booking.setTableOfRestaurant(optionalTableOfRestaurant.get());
             booking.setCustomer(customer);
             booking = bookingRepository.save(booking);
-
-            Integer totalAmount = getTotalPriceFromOrderList(orderItemList);
 
             OrderOfRestaurant orderOfRestaurant = OrderOfRestaurant.builder()
                     .comments("")
@@ -85,8 +86,11 @@ public class BookingOrderService {
     private Integer getTotalPriceFromOrderList(List<OrderItem> orderItemList){
         Integer totalAmount = 0;
         for(OrderItem orderItem : orderItemList){
-            Menu menu = menuRepository.getOne(orderItem.getMenu().getMenuId());
-            totalAmount = totalAmount + menu.getPrice();
+            Optional<Menu> menu = menuRepository.findById(orderItem.getMenu().getMenuId());
+            if(!menu.isPresent()){
+                throw new ServiceException(MenuErrorType.INVALID_MENU_NUMBER);
+            }
+            totalAmount = totalAmount + menu.get().getPrice();
         }
         return totalAmount;
     }

@@ -3,13 +3,12 @@ package com.company.bookingservice.service;
 import com.company.bookingservice.commons.error.MenuErrorType;
 import com.company.bookingservice.commons.exception.ServiceException;
 import com.company.bookingservice.dao.Menu;
-import com.company.bookingservice.dto.MenuDto;
-import com.company.bookingservice.factory.MenuFactory;
 import com.company.bookingservice.repository.MenuRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MenuService {

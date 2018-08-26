@@ -2,7 +2,6 @@ package com.company.bookingservice.controller;
 
 import com.company.bookingservice.dto.MenuDto;
 import com.company.bookingservice.facade.MenuFacade;
-import com.company.bookingservice.service.MenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;

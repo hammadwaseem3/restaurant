@@ -1,6 +1,23 @@
 spring:
   application:
     name: booking-service    # define name of Service
+  cache:
+    type: redis
+    cache-names: redisCache
+  redis:
+    host: 127.0.0.1
+    port: 6379
+#  jpa:
+#    properties:
+#      hibernate:
+#        cache:
+#          use_second_level_cache: true
+#          region:
+#            factory_class: org.hibernate.cache.ehcache.EhCacheRegionFactory
+#      javax:
+#        persistence:
+#          sharedCache:
+#            mode: ENABLE_SELECTIVE
   datasource:
     url: jdbc:mysql://localhost:3306/restaurant
     username: root
@@ -11,3 +28,9 @@ eureka:
       defaultZone: http://localhost:1111/eureka/  # define eureka server path
 server:
   port: 2222    # http port number
+
+#logging:
+#  level:
+#    net:
+#      sf:
+#        ehcache: debug

@@ -5,7 +5,8 @@ public enum MenuErrorType implements ErrorEnumType<BookingOrderErrorType> {
     UNABLE_TO_DELETE(2, "Unable to delete from menu"),
     NO_ID_SPECIFIED(3, "No Id is specified, kindly specify Id in request"),
     SOMETHING_BAD_HAPPEN(4, "Something bad happen"),
-    PRICE_CANNOT_BE_NEGATIVE(5, "price cannot be negative");
+    PRICE_CANNOT_BE_NEGATIVE(5, "price cannot be negative"),
+    INVALID_MENU_NUMBER(6, "Menu ID is invalid");
 
     private int code;
     private String errorMessage;
