@@ -1,6 +1,6 @@
 package com.company.bookingservice.commons.error;
 
-public enum MenuErrorType implements ErrorEnumType<BookingOrderErrorType> {
+public enum MenuErrorType implements ErrorEnumType<MenuErrorType> {
     UNABLE_TO_INSERT(1, "Unable to insert into menu"),
     UNABLE_TO_DELETE(2, "Unable to delete from menu"),
     NO_ID_SPECIFIED(3, "No Id is specified, kindly specify Id in request"),
@@ -11,20 +11,16 @@ public enum MenuErrorType implements ErrorEnumType<BookingOrderErrorType> {
     private int code;
     private String errorMessage;
 
-    private MenuErrorType(int code, String errorMessage) {
+    MenuErrorType(int code, String errorMessage) {
         this.code = code;
         this.errorMessage = errorMessage;
     }
 
-    public int getCode() {
-        return this.code;
-    }
-
-    public String getAppCode() {
+    public String getCode() {
         return String.format("%d", this.code);
     }
 
-    public String getAppMessage() {
+    public String getMessage() {
         return this.errorMessage;
     }
 }

@@ -6,20 +6,16 @@ public enum BookingOrderErrorType implements ErrorEnumType<BookingOrderErrorType
     private int code;
     private String errorMessage;
 
-    private BookingOrderErrorType(int code, String errorMessage) {
+    BookingOrderErrorType(int code, String errorMessage) {
         this.code = code;
         this.errorMessage = errorMessage;
     }
 
-    public int getCode() {
-        return this.code;
-    }
-
-    public String getAppCode() {
+    public String getCode() {
         return String.format("%d", this.code);
     }
 
-    public String getAppMessage() {
+    public String getMessage() {
         return this.errorMessage;
     }
 }

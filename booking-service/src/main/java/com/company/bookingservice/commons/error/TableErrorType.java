@@ -1,6 +1,6 @@
 package com.company.bookingservice.commons.error;
 
-public enum TableErrorType implements ErrorEnumType<BookingOrderErrorType> {
+public enum TableErrorType implements ErrorEnumType<TableErrorType> {
     UNABLE_TO_INSERT(1, "Unable to insert into table"),
     UNABLE_TO_DELETE(2, "Unable to delete from table"),
     NO_ID_SPECIFIED(3, "No Id is specified, kindly specify Id in request"),
@@ -14,20 +14,16 @@ public enum TableErrorType implements ErrorEnumType<BookingOrderErrorType> {
     private int code;
     private String errorMessage;
 
-    private TableErrorType(int code, String errorMessage) {
+    TableErrorType(int code, String errorMessage) {
         this.code = code;
         this.errorMessage = errorMessage;
     }
 
-    public int getCode() {
-        return this.code;
-    }
-
-    public String getAppCode() {
+    public String getCode() {
         return String.format("%d", this.code);
     }
 
-    public String getAppMessage() {
+    public String getMessage() {
         return this.errorMessage;
     }
 }
